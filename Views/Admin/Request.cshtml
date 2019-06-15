@@ -1,0 +1,82 @@
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["title"] = "Document Request Information";
+
+    if (@Model.Status == "Released")
+    {
+        ViewData["stat"] = "text-success";
+    }
+    if (@Model.Status == "For Release")
+    {
+        ViewData["stat"] = "text-info";
+    }
+    if (@Model.Status == "Pending")
+    {
+        ViewData["stat"] = "text-danger";
+    }
+}
+
+@model NGODP.Models.RequestViewModel
+
+<div class="container">
+
+    <div class="row mb-5">
+        <div class="row">
+            <span class="display-4 text-danger mb-3">Request Information</span>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <label class="text-muted"><b>Filing Date:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Filedate">
+        </div>
+
+        <div class="col-md-4">
+            <label class="text-muted"><b>Document Requested:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Type">
+        </div>
+
+        <div class="col-md-4">
+            <label class="text-muted"><b>Purpose:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Purpose">
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <label class="text-muted"><b>Reference Number:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Refno">
+    </div>
+
+    <div class="row mb-1">
+        <label class="text-muted"><b>Student:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Student">
+    </div>
+
+    <div class="row mb-1">
+        <label class="text-muted"><b>Course:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Course">
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <label class="text-muted"><b>Mobile Number:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.MobileNo">
+        </div>
+
+        <div class="col-md-6">
+            <label class="text-muted"><b>Email:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Email">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="text-muted"><b>Status:</b></label>
+        <input type="text" disabled class="form-control mb-0 @ViewData["stat"]" value="@Model.Status.ToUpper()">
+    </div>
+
+        <div class="row mb-3">
+        <label class="text-muted"><b>Processing Fee:</b></label>
+        <input type="text" disabled class="form-control mb-0 @ViewData["stat"]" value="@Model.Amount">
+    </div>

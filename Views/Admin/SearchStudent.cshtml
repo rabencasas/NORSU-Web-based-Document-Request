@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Search Student";
+}
+@model IEnumerable<NGODP.Models.Student>
+
+<div class="container">
+
+    <div class="row mb-5 text-muted">
+        <h4 class="display-4 text-muted">Search Student</h4>
+    </div>
+
+    <div class="row" style="margin-bottom: 3rem;">
+        <form class="form-inline my-2 my-lg-0" asp-action="SearchStudent" method="POST">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search student name" aria-label="Search" name="Keyword">
+            <button class="btn btn-outline-primary   my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+
+    @{
+        if (Model.Count() != 0)
+        {
+            <div class="row mb-4">
+                <span class="h5 border-bottom border-gray pb-2 mb-0">Search results for keyword:</span>
+            </div>
+
+            @foreach(Student x in Model)
+            {
+                <div class="row bg-light mb-2">
+                    <div class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="ml-3 text-gray-dark">@x.Fname @x.Mname @x.Lname</strong>
+                        <a class="mr-4 pt-2" asp-action="Student" asp-route-id="@x.Uname">View</a>
+                        </div>
+                    
+                        <span class="ml-3 d-block">@x.Address</span>
+                        <span class="ml-3 d-block">@x.Mobileno | @x.Email</span>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="row">
+                <span class="text-danger">
+                    No student was from the database. Try again.
+                </span>
+            </div>
+        }
+    }
+
+</div>

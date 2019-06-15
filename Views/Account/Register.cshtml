@@ -1,0 +1,172 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   <title>Registration</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="#">
+
+   <link rel="stylesheet" href="~/_Assets/bootstrap/css/bootstrap.min.css">
+   <script src="~/_Assets/bootstrap/js/bootstrap.min.js"></script>
+
+   <style>
+      .container-1{
+          padding-top: 3em;
+      }
+      input, .input{
+         width: 100%;
+         font-weight: bold;
+      }
+      footer{
+          padding-bottom: 3em;
+      }
+      .h2{
+          padding-top: 1em;
+          padding-bottom: 2em;
+      }
+   </style>
+
+
+</head>
+
+<body>
+
+<div class="container container-1">
+    <h1>
+        NORSU-Guihulngan
+        <br>
+        Online Data Processing System
+    </h1>
+
+    <a asp-area="" asp-controller="Account" asp-action="Login"><b>Back to Log-in</b></a>
+    <hr>
+</div>
+
+<div class="container">
+
+    <div class="row mb-5">
+        <span class="display-4 text-success">Registration</span>
+    </div>
+
+    <div class="row">
+        <form asp-action="Register" method="POST">
+    </div>
+
+    <div class="row mb-3 col-md-12">
+        <span class="text-danger">@ViewData["errmsg"]</span>
+        <span class="display-4 text-success">@ViewData["yesmsg"]</span>
+        <br>
+        <span class="h4 text-success"<strong>@ViewData["yesmsg2"]</span>
+    </div>
+
+    <div class="row col-md-6 mb-3">
+        <label class="text-muted"><b>Firstname:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="fname" value="@ViewData["fname"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Middlename:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="mname" value="@ViewData["mname"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Lastname:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="lname" value="@ViewData["lname"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Suffix:</b></label>
+        <input type="text" autofocus class="form-control mb-0" name="suffix" value="@ViewData["suffix"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Age:</b></label>
+        <input type="number" required autofocus class="form-control mb-0" name="age"  value="@ViewData["age"]">
+    </div>
+
+    <div class="row col-md-6 mb-3">
+        <label class="mb-3 text-muted"><b>Gender:</b></label>
+        
+        <select class="required custom-select input mr-md-2 mb-4" name="gender"  value="@ViewData["gender"]">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+    <div class="row col-md-6 mb-3">
+        <label class="mb-3 text-muted"><b>Civil Status:</b></label>
+        
+        <select class="required custom-select input mr-md-2 mb-4" name="civilstat"  value="@ViewData["civilstat"]">
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+        </select>
+    </div>
+
+    <div class="row col-md-6 mb-3">
+        <label class="text-muted"><b>Address:</b></label>
+        <textarea class="form-control mb-0" name="addr" required autofocus>@ViewData["addr"]</textarea>
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Mobile Number:</b></label>
+        <input type="number" required autofocus class="form-control mb-0" name="mobile"  value="@ViewData["mobileno"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Email:</b></label>
+        <input type="email" required autofocus class="form-control mb-0" name="email"  value="@ViewData["email"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Birthdate:</b></label>
+        <input type="date" required autofocus class="form-control mb-0" name="bdate"  value="@ViewData["bdate"]">
+    </div>
+
+    <div class="row col-md-6 mb-5" >
+        <label class="text-muted"><b>Birth Place:</b></label>
+        <textarea class="form-control mb-0" name="bplace" required autofocus>@ViewData["bplace"]</textarea>
+    </div>
+
+    <div class="row col-md-6 mb-3">
+        <label class="mb-3 text-muted"><b>Are you a graduate?:</b></label>
+        
+        <select class="required custom-select input mr-md-2 mb-4" name="isgrad"  value="@ViewData["isgrad"]">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+    </div>
+    
+    <div class="row col-md-6">
+        <label class="h3 border-bottom border-gray text-muted">Account Details</label>
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>Username:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="uname"  value="@ViewData["uname"]">
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>Password:</b></label>
+        <input type="password" required autofocus class="form-control mb-0" name="pwd">
+    </div>
+
+    <div class="row mb-5 col-md-6">
+        <label class="text-muted"><b>Confirm Password:</b></label>
+        <input type="password" required autofocus class="form-control mb-0" name="confirm">
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <button type="submit"  class="btn btn-md btn-success">Register</button>
+    </div>
+
+    <div class="row">
+        </form>
+    </div>
+
+</body>
+</html>

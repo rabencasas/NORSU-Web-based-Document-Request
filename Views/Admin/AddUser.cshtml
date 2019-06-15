@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Add another user";
+}
+
+<div class="container">
+
+    <div class="row mb-2">
+        <span class="display-4 text-danger">Add New User</span>
+    </div>
+
+        <div class="row mb-5">
+        <span class="text-danger">
+            @ViewData["err"]
+        </span>
+    </div>
+
+    <div class="row">
+        <form asp-action="AddUser" method="POST">
+    </div>
+
+    <div class="row col-md-6 mb-4">
+        <label class="text-muted"><b>Firstname:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="Fname">   
+    </div>
+
+    <div class="row mb-5 col-md-6 mb-4" >
+        <label class="text-muted"><b>Lastname:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="Lname">
+    </div>
+    
+    <div class="row col-md-6">
+        <label class="border-bottom border-gray h5 text-muted">Account Details</label>
+    </div>
+
+        <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>Username:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="Uname">
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>Password:</b></label>
+        <input type="password" required autofocus class="form-control mb-0" name="Pwd">
+    </div>
+
+    <div class="row mb-5 col-md-6">
+        <label class="text-muted"><b>Confirm Password:</b></label>
+        <input type="password" required autofocus class="form-control mb-0" name="Confirm">
+    </div>
+
+    <div class="row mb-3 cold-md-6">
+        <div class="row ml-3">
+            <button type="submit"  class="btn btn-lg btn-success">Add User</button>
+        </div>
+    </div>
+
+    <div class="row">
+        </form>
+    </div>
+</div>

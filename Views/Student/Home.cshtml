@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "_LayoutStudent";
+    ViewData["title"] = "Home";
+}
+
+@model IEnumerable<NGODP.Models.RequestViewModel>
+
+<div class="container">
+
+    <div class="row mb-5">
+        <span class="display-4 text-success mb-3">Your Current Requests</span>
+    </div>
+
+    <div class="row">
+    <div class="col-md-8 order-md-1 mb-3">
+
+    <div class="table-responsive table-hover table-bordered">
+        <table class="table">
+            <thead>
+                <th>File Date</th>
+                <th>Request Type</th>
+                <th>Processing Fee</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (item.Status != "Released")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Filedate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                <td>
+                                <a asp-action="Request" asp-route-id="@item.Refno">View</a>
+                                
+                                @if (item.Status == "Pending")
+                                {
+                                    <span> | </span><a asp-action="ConfirmCancel" asp-route-id="@item.Refno"><i>Cancel</i></a>
+                                }
+                                @if (item.Status == "Approved" || item.Status == "On Process" || item.Status == "For Release")
+                                {
+                                    <span> | </span><a asp-action="ApplicationForm" asp-route-id="@item.Refno"><b>Print</b></a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-1">
+            <span class="text-muted">Records</span>
+        </h4>
+        <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+            <h7 class="my-0 small"><b>TOTAL TRANSCRIPT OF RECORDS</b></h7>
+            </div>
+            <span class="text-muted">@ViewData["tor"]</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+            <h7 class="my-0 small"><b>TOTAL DIPLOMA</b></h7>
+            </div>
+            <span class="text-muted">@ViewData["dpl"]</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span><b><a asp-action="CreateRequest" class="btn btn-primary">Create New Request</a></b></span>
+            <a asp-action="RequestHistory">See History</a>
+        </li>
+        </ul> 
+    </div>
+</div>
+</div>

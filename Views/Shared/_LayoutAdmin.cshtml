@@ -1,0 +1,80 @@
+﻿
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   <title>@ViewData["title"] - Administrator</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="#">
+
+   <link rel="stylesheet" href="~/_Assets/bootstrap/css/bootstrap.min.css">
+   <script src="~/_Assets/bootstrap/js/bootstrap.min.js"></script>
+
+   <style>
+      .container{
+         padding-top: 7em;
+      }
+      form{
+         max-width: 330px;
+         }
+      input, .input{
+         width: 100%;
+         font-weight: bold;
+      }
+      footer{
+          padding-bottom: 3em;
+      }
+   </style>
+
+
+</head>
+
+<body>
+   
+<!-- navigation here -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+        <a class="navbar-brand" asp-action="Home">NGRODP</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="h5 nav-link" asp-action="Home">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Requests">REQUESTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Students">STUDENTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Messaging">MESSAGING</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="RequestHistory">HISTORY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Users">USERS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Feedbacks"><i>FEEDBACKS</i></a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                </li>        
+            </ul>
+        </div>
+    </nav>
+
+  @RenderBody()
+
+</body>
+</html>

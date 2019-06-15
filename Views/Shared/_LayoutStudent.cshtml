@@ -1,0 +1,64 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   <title>@ViewData["Title"] - Student</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="#">
+
+   <link rel="stylesheet" href="~/_Assets/bootstrap/css/bootstrap.min.css">
+   <script src="~/_Assets/bootstrap/js/bootstrap.min.js"></script>
+   
+
+   <style>
+      .container{
+         padding-top: 2em;
+      }
+      .head{
+        background-color: #ccc;
+      }
+      form{
+         max-width: 330px;
+         }
+      input, .input{
+         width: 100%;
+         font-weight: bold;
+      }
+      .container{
+          padding-bottom: 3em;
+      }
+    .text-error{
+          color: #aa1212;
+      }
+
+   </style>
+</head>
+
+<body>
+
+    <div class="head d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto"><b><a asp-action="Home">NGODP</a></b></h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" asp-controller="Student" asp-action="Home"><b>Home</b></a>
+        <a class="p-2 text-dark" asp-controller="Student" asp-action="RequestHistory"><b>History</b></a>
+        <a class="p-2 text-dark" asp-controller="Student" asp-action="Notifications"><b>Notifications</b></a>
+        <a class="p-2 text-dark" asp-controller="Student" asp-action="Messaging"><b>Messaging</b></a>
+        <a class="p-2 text-dark" asp-controller="Student" asp-action="Profile"><b>Profile</b></a>
+      </nav>
+      <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Logout"><b>Logout</b></a>
+    </div>
+
+        @RenderBody()
+
+<!-- footer  -->
+<!-- <footer class="footer">
+    <div class="tex-muted text-center">
+    <span>All rights reserved &copy; 2019   *   Negros Oriental State University - Guihulngan Campus
+    </div></span>
+</footer>             -->
+
+</body>
+</html>

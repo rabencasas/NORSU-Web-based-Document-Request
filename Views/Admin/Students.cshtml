@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Students";
+}
+@model IEnumerable<NGODP.Models.Student>
+
+<div class="container">
+
+    <div class="row mb-5 text-muted">
+        <h4 class="display-4 text-info">Students</h4>
+    </div>
+
+    <div class="row" style="margin-bottom: 3rem;">
+        <form class="form-inline my-2 my-lg-0" asp-action="SearchStudent" method="POST">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search student name" aria-label="Search" name="Keyword">
+            <button class="btn btn-outline-primary   my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="row">
+    <span class="h5 text-muted">LIST OF REGISTERED STUDENTS</span>
+    <div class="table-responsive table-bordered table-hover">
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Address</th>
+                <th>Mobile Number</th>
+                <th>Email Address</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    ViewData["name"] = string.Concat(item.Fname," ",item.Mname," ",item.Lname);
+
+                    <tr>
+                        <td><a asp-action="Student" asp-route-id="@item.Uname">@ViewData["name"]</a></td>
+                        <td>@item.Course</td>
+                        <td>@item.Address</td>
+                        <td>@item.Mobileno</td>
+                        <td>@item.Email</td>
+                    </tr>                
+                }
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</div>

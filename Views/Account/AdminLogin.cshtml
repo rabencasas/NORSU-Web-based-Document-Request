@@ -1,0 +1,87 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   <title>Administrator Login</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="#">
+
+   <link rel="stylesheet" href="~/_Assets/bootstrap/css/bootstrap.min.css">
+   <script src="~/_Assets/bootstrap/js/bootstrap.min.js"></script>
+
+   <style>
+      .container{
+         padding-top: 3em;
+      }
+      .title{
+         padding-top: 2em;
+         padding-bottom: 2em;
+      }
+      form{
+         max-width: 330px;
+         }
+      input{
+         padding: 10px;
+         width: 100%;
+      }
+      .input{
+          font-weight: bold;
+      }
+      .text-error{
+           color: #aa1212;
+      }
+   </style>
+
+
+</head>
+
+<body>
+   
+   <div class="container">
+
+      <h1>
+         NORSU-Guihulngan
+         <br>
+        Online Data Processing System
+      </h1>
+   </div>
+
+   <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <img src="~/images/norsu.png">
+                </div>
+                <p class="h4">
+                    <h3>Transcript of Records (TOR),</h3> <h3>Diploma</h3> online processing exclusive for
+                    NORSU-Guihulngan Students and Graduates.
+                    <br>
+                    <br>
+                    <a asp-area="" asp-controller="Account" asp-action="Login"><b>Back to Student Login</b></a>
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+                <form asp-controller="Account" asp-action="AdminLogin" method="POST">
+                    <h1 class="h3">Administrator</h1>
+                    <hr>
+                    <label>Username</label>
+                    <input type="text" class="form-control input" name="Uname"  required autofocus>
+                    <label>Password</label>
+                    <input type="password" class="form-control input" name="Pwd" required autofocus>
+                    <br>
+                    <button type="submit" class="form-control btn btn-md btn-primary input">Login</button>
+                    <div class="text-error text-center"><span class="text-error">@ViewData["Message"]</span></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>

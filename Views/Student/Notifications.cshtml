@@ -1,0 +1,38 @@
+@{
+    Layout = "_LayoutStudent";
+    ViewData["title"] = "Notifications";
+}
+
+@model IEnumerable<NGODP.Models.Request>
+
+<div class="container">
+
+    <div class="row mb-5">
+        <span class="h2 text-primary mb-3">Notifications</span>
+    </div>
+
+    @foreach (Request x in Model)
+    {
+        if (x.Notification == "0")
+        {
+            <div class="row mb-3">
+                <span class="text-success">
+                    Your request <b>@x.Type</b> with reference number: <b>@x.Refno</b> was successfully acquired on @x.Filedate
+                    <a asp-action="UpdateNotifications" asp-route-id="@x.Refno" class="btn btn-md btn-outline-primary">Got it</a>
+                </span>
+            </div>
+        }
+
+        if (x.Feedback == "0")
+        {
+            <div class="row mb-3">
+                <span>
+                    You haven't taken an action on feedback opportunity on your request: <b>@x.Refno</b>
+                    <a asp-action="NoFeedback" asp-route-id="@x.Refno" class="btn btn-md btn-outline-danger">Ignore</a>
+                    <a asp-action="AddFeedback" asp-route-id="@x.Refno" class="btn btn-md btn-primary">Make Feedback</a>
+                </span>
+            </div>
+        }
+    }
+
+</div>

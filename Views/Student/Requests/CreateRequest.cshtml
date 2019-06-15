@@ -1,0 +1,137 @@
+﻿@{
+    Layout = "_LayoutStudent";
+    ViewData["title"] = "Create New Request";
+    
+    if(ViewData["amt"] != null)
+    {
+        string a = ViewData["amt"].ToString();
+        float amt = float.Parse(a);
+    }
+    else
+    {
+        float amt = 0;
+    }
+}
+
+<div class="container">
+
+    <div class="row mb-5">
+        @if (ViewData["result"] == "1")
+            {
+                <p class="text-center lead">
+                    <h2 class="success text-success"><span class="mb-2">Congratulations!</span><br>You have successfully created your new request!</h2>
+                    <h4 class="success text-success">Please pay a processing fee of @ViewData["amt"] pesos upon submitting the application form.</h4>
+                </p>
+                <br>
+            }
+    </div>
+
+    <div class="row mb-4">
+        <h4 class="display-4 text-primary">Create New Request</h4>
+    </div>
+
+    <div class="row mb-1">
+
+        <form asp-controller="Student" asp-action="CreateRequest" method="POST" class="col-md-6">
+            <label class="mb-3"><b>Select the type of request:</b></label>
+            
+            <select class="custom-select input mr-md-2 mb-4" name="Type">
+                <option value="0">Choose...</option>
+                <option value="1">Transcript of Record</option>
+                <option value="2">Diploma</option>
+            </select>
+
+            <div class="d-block my-3">
+                <label class="mb-3"><b>State the purpose of request:</b></label>
+
+                <select class="custom-select input mr-md-2" name="Purpose">
+                    <option value="0">Choose...</option>
+                    <option value="0"></option>
+                    <option value="0">N/A <i>(Not Applicable)</i></option>
+                    <option value="Other">Other Purpose (Specify below.)</option>
+                    <option value="0"></option>
+                    <option value="Transfer">Transfer</option>
+                    <option value="Employment">Employment</option>
+                    <option value="Board Examination">Board Examination</option>
+                    <option value="Promotion">Promotion</option>
+                    <option value="Ranking">Ranking</option>
+                    <option value="Further Studies">Further Studies</option>
+                    <option value="Scholarship">Scholarship</option>
+                    <option value="Study Abroad">Study Abroad</option>
+                    <option value="Employment Abroad">Employment Abroad</option>
+                    <option value="Travel Abroad">Travel Abroad</option>
+                </select>
+            </div>
+
+            <div class="d-block my-0">
+                <label class="mb-3"><b>Specify if other purpose:</b></label>
+            </div>
+
+            <div class="d-block mb-4">
+                <textarea class="form-control" name="OtherPurpose"></textarea>
+            </div>
+
+        <button type="submit" class="btn btn-lg btn-outline-success mt-3">Create</button>
+        </form>
+    </div>
+
+    <div class="row mt-3">
+        <span class="text-danger">
+            @ViewData["result"];
+        </span>
+    </div>
+
+    <div class="row mt-5">
+        <strong class="my-2 text-muted"><h5>REQUIREMENTS:</h5></strong>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <p><small>
+                <h2 class="h4"><u><b>Transcript of Records</b></u></h2>
+    
+                <p class="lead"><b>For employment and Board Exam Purposes</b></p>
+                <ul>
+                    <li>Duly accomplished clearance of last school year attended</li>
+                    <li>Official Receipt (From Cashier's Office)</li>
+                    <li>Colored 2x2 I.D. Picture with Name Tag (1pc)</li>
+                    <li>1 piece documentary stamp</li>
+                    <li>NSO Birth Certificate (Photocopy)</li>
+                </ul>
+    
+                <p class="lead"><b>For For transfer/further studies</b></p>
+                <ul>
+                    <li>Duly accomplished clearance of last school year attended</li>
+                    <li>Official Receipt (From Cashier's Office)</li>
+                    <li>Colored 2x2 I.D. Picture with Name Tag (1pc)</li>
+                    <li>1 piece documentary stamp</li>
+                    <li>NSO Birth Certificate (Photocopy)</li>
+                </ul>     
+            </p></small> 
+        </div>
+        <div class="col-md-6">
+            <p><small>
+                <h2 class="h4"><u><b>Diploma</b></u></h2>
+    
+                <p class="lead"><b>First Request</b></p>
+    
+                <ul>
+                    <li>Photocopy of Transcript of Records</li>
+                    <li>Certification of Full Payment (Cashier's Office)</li>
+                    <li>Document Request Form</li>
+                </ul>
+    
+                <p class="lead"><b>Second Copy</b></p>
+    
+                <ul>
+                    <li>Photocopy of Transcript of Records</li>
+                    <li>Official Receipt</li>
+                    <li>Document Requeset Form</li>
+                </ul>
+            </p></small>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>

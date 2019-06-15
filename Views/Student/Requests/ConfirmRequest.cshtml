@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "_LayoutStudent";
+}
+
+<div class="container text-center">
+    
+    <h1 class="display-4">Confirm Request</h1>
+
+    <p>
+        @{
+            if (ViewData["stat"] == "success")
+            {
+                <p>
+                    <h5 class="success text-success">[ You have successfully created your new request! ]</h5>
+                    <a asp-action="Home">Go Back to Home</a><br>
+                </p>
+            }
+            else
+            {
+                <p class="lead mb-3">
+                    Click the <b>Confirm</b> button to complete the request <br>
+                    otherwise click the <b>Cancel</b> button.
+                </p>
+            }
+        }
+    </p>
+
+    <button class="btn btn-outline-primary"><b>Confirm</b></button>
+    <button class="btn btn-outline-info"><b>Cancel</b></button>
+</div>

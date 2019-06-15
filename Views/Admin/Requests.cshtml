@@ -1,0 +1,177 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Requests";
+
+    int p = 0;
+    int a = 0;
+    int o = 0;
+    int r = 0;
+
+    foreach (var item in Model)
+    {
+        if(item.Status == "Pending")
+        {
+            p++;
+        }
+
+        if(item.Status == "Approved")
+        {
+            a++;
+        }
+
+        if(item.Status == "On Process")
+        {
+            o++;
+        }
+
+        if(item.Status == "For Release")
+        {
+            r++;
+        }
+    }
+
+    ViewData["p"] = p;
+    ViewData["a"] = a;
+    ViewData["o"] = o;
+    ViewData["r"] = r;
+}
+
+@model IEnumerable<NGODP.Models.RequestViewModel>
+
+<div class="container">
+
+    <div class="row mb-5 text-muted">
+        <h4 class="display-4 text-info">Requests</h4>
+    </div>
+
+    <div class="row mb-4">
+        <strong class="text-danger">
+            @TempData["a_msg"]
+        </strong>
+    </div>
+
+
+    <div class="row" style="margin-bottom: 3rem;">
+        <form class="form-inline my-2 my-lg-0" asp-action="SearchRequest" method="POST">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search reference number" aria-label="Search" name="Id">
+            <button class="btn btn-outline-primary   my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="col-md-12 order-md-1 mb-5">
+
+        <label class="h5 text-danger mb-3">PENDING REQUESTS (@ViewData["p"])</label>
+        <div class="table-responsive table-hover table-bordered">
+            <table class="table">
+                <thead>
+                    <th>Reference Number</th>
+                    <th>Student</th>
+                    <th>Document Type</th>
+                    <th>Purpose</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if(item.Status == "Pending")
+                        {
+                            <tr>
+                                <td><a asp-action="ManageRequest" asp-route-id="@item.Refno">@Html.DisplayFor(modelItem => item.Refno)</a></td>
+                                <td><a asp-action="Student" asp-route-id="@item.StudentId">@item.Student</a></td>
+                                <td>@item.Type</td>
+                                <td>@item.Purpose</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-12 order-md-1 mb-5">
+
+        <label class="h5 text-primary mb-3">APPROVED REQUESTS (@ViewData["a"])</label>
+        <div class="table-responsive table-hover table-bordered">
+            <table class="table">
+                <thead>
+                    <th>Reference Number</th>
+                    <th>Student</th>
+                    <th>Document Type</th>
+                    <th>Purpose</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if(item.Status == "Approved")
+                        {
+                            <tr>
+                                <td><a asp-action="ManageRequest" asp-route-id="@item.Refno">@Html.DisplayFor(modelItem => item.Refno)</a></td>
+                                <td><a asp-action="Student" asp-route-id="@item.StudentId">@item.Student</a></td>
+                                <td>@item.Type</td>
+                                <td>@item.Purpose</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-12 order-md-1 mb-5">
+
+        <label class="h5 text-info mb-3">ON PROCESS REQUESTS (@ViewData["o"])</label>
+        <div class="table-responsive table-hover table-bordered">
+            <table class="table">
+                <thead>
+                    <th>Reference Number</th>
+                    <th>Student</th>
+                    <th>Document Type</th>
+                    <th>Purpose</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if(item.Status == "On Process")
+                        {
+                            <tr>
+                                <td><a asp-action="ManageRequest" asp-route-id="@item.Refno">@Html.DisplayFor(modelItem => item.Refno)</a></td>
+                                <td><a asp-action="Student" asp-route-id="@item.StudentId">@item.Student</a></td>
+                                <td>@item.Type</td>
+                                <td>@item.Purpose</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-12 order-md-1 mb-5">
+
+        <label class="h5 text-success mb-3">FOR RELEASE REQUESTS (@ViewData["r"])</label>
+        <div class="table-responsive table-hover table-bordered">
+            <table class="table">
+                <thead>
+                    <th>Reference Number</th>
+                    <th>Student</th>
+                    <th>Document Type</th>
+                    <th>Purpose</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if(item.Status == "For Release")
+                        {
+                            <tr>
+                                <td><a asp-action="ManageRequest" asp-route-id="@item.Refno">@Html.DisplayFor(modelItem => item.Refno)</a></td>
+                                <td><a asp-action="Student" asp-route-id="@item.StudentId">@item.Student</a></td>
+                                <td>@item.Type</td>
+                                <td>@item.Purpose</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

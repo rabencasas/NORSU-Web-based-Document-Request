@@ -1,0 +1,154 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["title"] = "Document Request Information";
+
+    if (@Model.Status == "Released")
+    {
+        ViewData["stat"] = "text-success";
+    }
+    if (@Model.Status == "For Release")
+    {
+        ViewData["stat"] = "text-info";
+    }
+    if (@Model.Status == "Pending")
+    {
+        ViewData["stat"] = "text-danger";
+    }
+}
+
+@model NGODP.Models.RequestViewModel
+
+
+
+<div class="container text-center">
+    
+    <div class="row text-center mb-4">
+            <span class="display-4 text-center">Manage Request</span>
+    </div>
+
+    <div class="row @ViewData["stat"]">
+        <h1 class="display-3 text-center">@Model.Status</h1>    
+    </div>
+
+    <div class="row mb-0">
+        <div class="row">
+            <span class="h3 text-danger mb-3">TRANSCRIPT OF RECORD</span>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @{
+            if(@Model.Status == "Pending"){
+                <div class="row">
+                    <span class="h2 text-danger mb-3">Pending</span>
+                </div>
+            };
+            if(@Model.Status == "For Release"){
+                <div class="row">
+                    <span class="h4 text-info mb-3"><u>Release will be on @Model.Releasedate</u></span>
+                </div>
+            };
+            if(@Model.Status == "Released"){
+                <div class="row">
+                    <span class="display-4 text-success mb-3"><u>Successfully Released</u></span>
+                </div>
+            }
+            if(@Model.Status == "Approved"){
+                <div class="row">
+                    <span class="display-4 text-success mb-3">Approved</span>
+                </div>
+            }
+            if(@Model.Status == "On Process"){
+                <div class="row">
+                    <span class="display-4 text-info mb-3">On Process</span>
+                </div>
+            }
+        }
+    </div>
+
+
+    <div class="row text-center pb-3 mb-5 text-center">
+        @{
+            if (Model.Status == "Pending")
+            {
+                <a class="btn btn-lg mr-2 btn-outline-success"  asp-action="ApproveRequest" asp-route-id="@Model.Refno"><b>Approve</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-info"  asp-action="SetProcessRequest" asp-route-id="@Model.Refno"><b>On Process State</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-danger"  asp-action="SetReleaseDate" asp-route-id="@Model.Refno"><b>Set Release Date</b></a>
+            }
+            if (Model.Status == "Approved")
+            {
+                <a class="btn btn-lg mr-2 btn-outline-secondary"  asp-action="PendingRequest" asp-route-id="@Model.Refno"><b>Pending</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-info"  asp-action="SetProcessRequest" asp-route-id="@Model.Refno"><b>On Process State</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-danger"  asp-action="SetReleaseDate" asp-route-id="@Model.Refno"><b>Set Release Date</b></a>
+            }
+            if (Model.Status == "On Process")
+            {
+                <a class="btn btn-lg mr-2 btn-outline-secondary"  asp-action="PendingRequest" asp-route-id="@Model.Refno"><b>Pending</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-success"  asp-action="ApproveRequest" asp-route-id="@Model.Refno"><b>Approve</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-danger"  asp-action="SetReleaseDate" asp-route-id="@Model.Refno"><b>Set Release Date</b></a>
+            }
+            if (Model.Status == "For Release")
+            {
+                <a class="btn btn-lg mr-2 btn-outline-danger"  asp-action="SetReleaseDate" asp-route-id="@Model.Refno"><b>Set Release Date</b></a>
+                <a class="btn btn-lg mr-2 btn-outline-info"  asp-action="ReleaseDocument" asp-route-id="@Model.Refno"><b>Release Document</b></a>
+            }
+        }
+        <hr>
+    </div>
+
+    <div class="row mb-4">
+        <div class="row col-md-4">
+            <label class="text-muted"><b>Filing Date:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Filedate">
+        </div>
+
+        <div class="row col-md-4">
+            <label class="text-muted"><b>Document Requested:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Type">
+        </div>
+
+        <div class="row col-md-4">
+            <label class="text-muted"><b>Purpose:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Purpose">
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <label class="text-muted"><b>Reference Number:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Refno">
+    </div>
+
+    <div class="row mb-1">
+        <label class="text-muted"><b>Student:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Student">
+    </div>
+
+    <div class="row mb-1">
+        <label class="text-muted"><b>Course:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Course">
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <label class="text-muted"><b>Mobile Number:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.MobileNo">
+        </div>
+
+        <div class="col-md-6">
+            <label class="text-muted"><b>Email:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Email">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="text-muted"><b>Status:</b></label>
+        <input type="text" disabled class="form-control mb-0 @ViewData["stat"]" value="@Model.Status.ToUpper()">
+    </div>
+
+    <div class="row mb-5">
+        <label class="text-muted"><b>Processing Fee:</b></label>
+        <input type="text" disabled class="form-control mb-0 @ViewData["stat"]" value="@Model.Amount">
+    </div>
+
+</div>

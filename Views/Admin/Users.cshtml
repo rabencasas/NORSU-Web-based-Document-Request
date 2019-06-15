@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Users";
+}
+@model IEnumerable<NGODP.Models.User>
+
+<div class="container">
+
+    <div class="row mb-0 text-muted">
+        <h4 class="display-4 text-danger">Users</h4>
+    </div>
+
+    <div class="row" style="margin-bottom: 3rem;">
+        <form class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-danger my-2 my-sm-0" asp-action="AddUser">Add New User</a>
+        </form>
+    </div>
+
+    <div class="row">
+    <div class="table-responsive table-bordered table-hover">
+        <table class="table">
+            <thead>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Uname</td>
+                        <td>@item.Fname</td>
+                        <td>@item.Lname</td>
+                        <td>@item.Gender</td>
+                    </tr>                
+                }
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</div>

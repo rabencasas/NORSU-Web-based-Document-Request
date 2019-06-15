@@ -1,0 +1,41 @@
+@{
+    Layout = "_LayoutStudent";
+
+    ViewData["title"] = "Messaging";
+}
+
+<div class="container">
+
+    <div class="row mb-5">
+        <div class="row">
+            <span class="display-4 text-info mb-3">Messaging</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row col-12">
+            <input class="form-control" type="hidden" id="userInput" value="@ViewData["stud"]" />
+            <span class="mb-2"><strong>Enter Message:</strong></span>
+            <textarea id="messageInput" class="form-control mb-5" style="height: 200px;"></textarea>
+            <br />
+            <input type="button" id="sendButton" value="Send Message" class="btn btn-md btn-outline-primary" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul id="messagesList" style="list-style: none;"></ul>
+        </div>
+    </div>
+
+   <link rel="stylesheet" href="~/_Assets/bootstrap/css/bootstrap.min.css">
+   <script src="~/_Assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+    
+</div>

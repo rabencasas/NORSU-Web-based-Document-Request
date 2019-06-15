@@ -1,0 +1,101 @@
+@{
+    Layout = "_LayoutStudent";
+
+    ViewData["name"] = String.Concat(@Model.Fname," ",@Model.Mname," ",@Model.Lname);
+    ViewData["title"] = "Profile";
+}
+
+@model NGODP.Models.Student
+
+<div class="container">
+
+    <div class="row mb-5">
+        <span class="display-4 text-danger mb-3">Profile Information</span>
+    </div>
+
+    <div class="row mb-5">
+        @if (ViewData["msg"] != "")
+        {
+            <span class="text-center text-danger">@ViewData["msg"]</span>
+        }
+        <div class="row">
+            <a class="btn btn-outline-danger" asp-action="UpdateProfile">Update My Profile</a>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="text-muted"><b>Fullname:</b></label>
+        <input type="text" disabled class="form-control mb-0" value="@ViewData["name"]">
+    </div>
+    
+    <div class="row justify-content-between mb-3">
+        <label class="text-muted"><b>Address:</b></label>
+        <textarea disabled class="form-control mb-0 font-weight-bold">@Model.Address</textarea>
+    </div>
+
+    <div class="row justify-content-between mb-3">
+        <div class="col-lg-4">
+            <label class="text-muted"><b>Gender:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Gender">
+        </div>
+        <div class="col-lg-4">
+            <label class="text-muted"><b>Civil Status:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.CivilStatus">
+        </div>
+        <div class="col-lg-4">
+            <label class="text-muted"><b>Age:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Age">
+        </div>
+    </div>
+
+     <div class="row justify-content-between mb-5">
+        <div class="col-lg-4">
+            <label class="text-muted"><b>Birthdate:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Birthdate">
+        </div>
+        <div class="col-lg-8">
+            <label class="text-muted"><b>Birth place:</b></label>
+            <textarea disabled class="form-control mb-0 font-weight-bold" >@Model.Birthplace</textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="border-bottom border-gray h5 text-muted">CONTACT DETAILS</label>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-lg-6">
+            <label class="text-muted"><b>Mobile Number:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Mobileno">
+        </div>
+        <div class="col-lg-6">
+            <label class="text-muted"><b>Email Address:</b></label>
+            <input type="text" disabled class="form-control mb-0" value="@Model.Email">
+        </div>
+    </div>
+    
+
+    <div class="row mt-4 mb-4">
+        <span class="h4 text-danger mb-3">ACADEMIC INFORMATION</span>
+    </div>
+    <div class="row mb-4">
+        <label class="h6">ELEMENTARY <i><small>(School name, address & year graduated)</small></i></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Elemname">
+        <textarea disabled class="form-control mb-0" >@Model.Elemaddr</textarea>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Elemyr">
+    </div>
+
+    <div class="row mb-4">
+        <label class="h6">SECONDARY <i><small>(School name, address & year graduated)</small></i></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Secname">
+        <textarea disabled class="form-control mb-0" >@Model.Secaddr</textarea>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Secyr">
+    </div>
+
+    <div class="row mb-4">
+        <label class="h6">COLLEGE/TERTIARY <i><small>(School name, address & year graduated)</small></i></label>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Tername">
+        <textarea disabled class="form-control mb-0" >@Model.Teraddr</textarea>
+        <input type="text" disabled class="form-control mb-0" value="@Model.Teryr">
+    </div>
+</div>

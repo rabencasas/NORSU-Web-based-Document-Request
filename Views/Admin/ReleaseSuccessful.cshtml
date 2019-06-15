@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Successfull";
+}
+
+<div class="container text-center">
+    
+    <h1 class="display-4 text-center text-success mb-2">Document Now Release</h1>
+    <p class="lead mb-2">
+            Successfully updated in the database and added in the history records.
+    </p>
+    <p class="h4 mb-5">
+            @if (ViewData["r"] == "1")
+            {
+                <strong class="text-success">@ViewData["result"]</strong>
+            }
+            else
+            {
+                <strong class="text-danger">@ViewData["result"]</strong>
+            }
+    </p>
+
+    <p mb-4>
+        <b>Reference Number: @TempData["id"]</b>
+        <h3>Request Type: @TempData["type"]</h3>
+        <cite>Filedate: @TempData["filedate"]</cite>
+        <h3>Amount Collected: @TempData["amt"]</h3>
+    </p>
+
+    <div class="row text-center mt-5">
+        <div class="col-md-12">
+            <input type="hidden" name="id" value="@ViewData["id"]">
+            <a class="btn btn-outline-primary" asp-action="Home"><b>Confirm</b></a>        
+        </div>
+    </div>
+</div>

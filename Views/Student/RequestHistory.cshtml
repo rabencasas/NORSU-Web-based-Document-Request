@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "_LayoutStudent";
+    ViewData["title"] = "Released History";
+}
+
+@model IEnumerable<NGODP.Models.HistoryViewModel>
+
+<div class="container mt-1 mb-5">
+    <div class="row">
+
+    <span class="display-4 text-muted mb-5">History of Acquired Documents</span>
+    <div class="table-responsive table-condensed table-striped" table-hover>
+        <table class="table">
+            <thead>
+                <th>Request Type</th>
+                <th>Date and Time Acquired</th>
+                <th>Details</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Timedate)</td>
+                            <td>
+                            <a asp-action="Request" asp-route-id="@item.Requestref">View</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

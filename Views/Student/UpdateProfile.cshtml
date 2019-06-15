@@ -1,0 +1,125 @@
+@{
+    Layout = "_LayoutStudent";
+    ViewData["title"] = "Update Profile";
+}}
+
+<div class="container">
+
+    <div class="row mb-5">
+        <span class="display-4 text-danger">Update Profile</span>
+    </div>
+
+    <div class="row">
+        <form asp-action="UpdateProfile" method="POST">
+    </div>
+
+    <div class="row mb-3 col-md-12">
+        <span class="text-danger">@ViewData["errmsg"]</span>
+        <span class="display-4 text-success">@ViewData["yesmsg"]</span>
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Mobile Number:</b></label>
+        <input type="number" required autofocus class="form-control mb-0" name="mobile"  value="@ViewData["mobileno"]">
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Email:</b></label>
+        <input type="email" required autofocus class="form-control mb-0" name="email"  value="@ViewData["email"]">
+    </div>
+
+        <div class="row col-md-6 mb-3">
+        <label class="mb-3 text-muted"><b>Are you a graduate?:</b></label>
+        
+        <select class="required custom-select input mr-md-2 mb-4" name="isgrad"  value="@ViewData["isgrad"]">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+    </div>
+
+    <div class="row col-md-6 mb-3" >
+        <label class="text-muted"><b>Graduate Year:</b></label>
+        <br>
+        <cite class="tex-muted">Type N/A if still studying or leave blank.</cite>
+        <input type="text" autofocus class="form-control mb-0" name="gradyr"  value="@ViewData["gradyr"]">
+    </div>
+
+    <div class="row col-md-6 mb-3">
+        <label class="text-muted"><b>Course:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="course" value="@ViewData["course"]">
+    </div>
+
+    <div class="row col-md-6 mb-5" >
+        <label class="text-muted"><b>Major:</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="major" value="@ViewData["major"]">
+    </div>
+
+
+    <div class="row col-md-6 mb-2">
+        <label class="h3 border-bottom border-gray text-muted">Elementary Education</label>
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>School Name (Elementary):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="elemname"  value="@ViewData["elemname"]">
+    </div>
+
+        <div class="row col-md-6 mb-3">
+        <label class="text-muted"><b>School Address (Elementary):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="elemaddr" value="@ViewData["elemaddr"]">
+    </div>
+
+    <div class="row col-md-6 mb-5" >
+        <label class="text-muted"><b>Year Graduated (Elementary):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="elemyr" value="@ViewData["elemyr"]">
+    </div>
+
+
+    <div class="row col-md-6 mb-2">
+        <label class="h3 border-bottom border-gray text-muted">Secondary Education</label>
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>School Name (Secondary):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="secname"  value="@ViewData["secname"]">
+    </div>
+
+        <div class="row col-md-6 mb-3">
+        <label class="text-muted"><b>School Address (Secondary):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="secaddr" value="@ViewData["secaddr"]">
+    </div>
+
+    <div class="row col-md-6 mb-5" >
+        <label class="text-muted"><b>Year Graduated (Secondary):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="secyr" value="@ViewData["secyr"]">
+    </div>
+
+    <div class="row col-md-6 mb-2">
+        <label class="h3 border-bottom border-gray text-muted">College Education</label>
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <label class="text-muted"><b>School Name (College):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="tername"  value="@ViewData["tername"]">
+    </div>
+
+        <div class="row col-md-6 mb-3">
+        <label class="text-muted"><b>School Address (College):</b></label>
+        <input type="text" required autofocus class="form-control mb-0" name="teraddr" value="@ViewData["teraddr"]">
+    </div>
+
+    <div class="row col-md-6 mb-5" >
+        <label class="text-muted"><b>Year Graduated (College):</b></label>
+        <br>
+        <cite class="tex-muted">Type N/A if still studying or leave blank</cite>
+        <input type="text" autofocus class="form-control mb-0" name="teryr" value="@ViewData["teryr"]">
+    </div>
+
+    <div class="row mb-3 col-md-6">
+        <button type="submit" class="btn btn-lg btn-danger">Update My Profile</button>
+    </div>
+
+    <div class="row">
+        </form>
+    </div>
+</div>

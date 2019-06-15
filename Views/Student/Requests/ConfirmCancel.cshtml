@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "_LayoutStudent";
+    ViewData["title"] = "Confirm Cancel Request";
+}
+
+<div class="container text-center">
+    
+    <h1 class="display-4 text-center mb-2">Confirm Cancel of Request</h1>
+    <p class="lead mb-5">
+            Click the <b><u>Confirm</u></b> button to complete the request <br>
+            otherwise click the <b><u>Cancel</u></b> button.
+    </p>
+
+    <p>
+        <b>Reference Number: @ViewData["id"]</b>
+        <h3>Request Type: @ViewData["type"]</h3>
+        <cite>Filedate: @ViewData["filedate"]</cite>
+    </p>
+
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <input type="hidden" name="id" value="@ViewData["id"]">
+            <a class="btn btn-outline-primary" asp-action="DeleteRequest" asp-route-id="@ViewData["id"]"><b>Confirm</b></a>        
+            <a class="btn btn-outline-info" asp-action="Home"><b>Cancel</b></a>
+        </div>
+    </div>
+</div>

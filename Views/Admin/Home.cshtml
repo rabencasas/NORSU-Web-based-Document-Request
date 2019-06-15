@@ -1,0 +1,104 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Home";
+}
+
+@model IEnumerable<NGODP.Models.RequestViewModel>
+
+<div class="container">
+
+    <div class="row mb-5">
+        <div class="row">
+            <span class="display-4 text-info">
+                Administrator's Home
+            </span>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="row">
+            <form class="form-inline my-2 my-lg-0" asp-action="SearchRequest" method="POST">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search Reference Number" aria-label="Search" name="Id">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+            @{
+                if(ViewData["resultstat"] == "1"){
+                    
+                    <span>
+                        <strong>@ViewData["resultmsg"]</strong>
+                    </span>
+                    <br>
+                    <span>
+                        <a asp-action="ManageRequest" asp-route-id="@ViewData["refno"]">@ViewData["refno"]</a>
+                    </span>
+                }
+                else
+                {
+                    <span class="text-danger">
+                        @ViewData["resultmsg"]
+                    </span>
+                }
+            }
+    </div>
+
+    <div class="row mb-5">
+        <label class="h5 text-success mb-3">FOR RELEASE REQUESTS</label>
+            <div class="table-responsive table-hover table-bordered">
+                <table class="table">
+                    <thead>
+                        <th>Release Date</th>
+                        <th>Student</th>
+                        <th>Document Type</th>
+                        <th>Purpose</th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if(item.Status == "For Release")
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Releasedate)</td>
+                                    <td><a asp-action="Student" asp-route-id="@item.StudentId">@item.Student</a></td>
+                                    <td><a  asp-action="ManageRequest" asp-route-id="@item.Refno">@item.Type</a></td>
+                                    <td>@Html.DisplayFor(modelItem => item.Purpose)</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+<div class="row mb-5 pt-5">
+        <label class="h5 text-danger mb-3">PENDING REQUESTS</label>
+        <div class="table-responsive table-hover table-bordered">
+            <table class="table">
+                <thead>
+                    <th>Reference Number</th>
+                    <th>Student</th>
+                    <th>Document Type</th>
+                    <th>Purpose</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if(item.Status == "Pending")
+                        {
+                            <tr>
+                                <td><a asp-action="ManageRequest" asp-route-id="@item.Refno">@Html.DisplayFor(modelItem => item.Refno)</a></td>
+                                <td><a asp-action="Student" asp-route-id="@item.StudentId">@item.Student</a></td>
+                                <td>@item.Type</td>
+                                <td>@Html.DisplayFor(modelItem => item.Purpose)</td>
+                                <td><a asp-action="ApproveRequest" asp-route-id="@item.Refno">Approve</a></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>

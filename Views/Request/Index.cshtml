@@ -1,0 +1,37 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IEnumerable<NGODP.Models.Request>
+
+<table>
+    <thead>
+        <tr>
+            <!-- <th>Refno</th> -->
+            <th>Student</th>
+            <th>Filedate</th>
+            <th>Type</th>
+            <th>Purpose</th>
+            <th>Releasedate</th>
+            <th>Lacking</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Student)</td>
+                <td>@Html.DisplayFor(modelItem => item.Filedate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.Purpose)</td>
+                <td>@Html.DisplayFor(modelItem => item.Releasedate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Lacking)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+                <td><a asp-action="Edit" asp-route-id="@item.Refno">Edit</a></td>                
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ActionLink("Add Amenity", "Add", "Amenity")

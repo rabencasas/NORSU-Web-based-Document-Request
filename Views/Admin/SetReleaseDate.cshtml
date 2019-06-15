@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["title"] = "Set Release Date";
+}
+
+
+<div class="container text-center">
+    
+    <div class="row text-center mb-4">
+            <span class="display-4 text-center">Set Release Date</span>
+    </div>
+
+    <div class="row mb-3">
+        <form asp-action="SetReleaseDate" method="POST">
+    </div>
+
+    <div class="row mb-2">
+        <div class="row">
+            <span class="h3 text-muted mb-3">Select a date for the release of requested document: </span>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <input type="hidden" value="@ViewData["id"]" name="Id">
+        <input type="date" class="form-control" name="Releasedate" required>
+    </div>
+
+    <div class="row mb-3">
+        <button class="btn btn-lg btn-outline-danger" type="submit">Set Date</button>
+    </div>
+
+    <div class="row">
+        </form>
+    </div>
+</div>

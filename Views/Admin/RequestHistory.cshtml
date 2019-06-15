@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Request History";
+}
+@model IEnumerable<NGODP.Models.HistoryViewModel>
+
+<div class="container">
+    <div class="row">
+
+    <span class="display-4 text-danger mb-5">Released Documents</span>
+    <div class="table-responsive table-bordered table-hover">
+        <table class="table">
+            <thead>
+                <th>Request Type</th>
+                <th>Date and Time Acquired</th>
+                <th>Details</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Timedate)</td>
+                        <td>
+                        <a asp-action="ManageRequest" asp-route-id="@item.Requestref">View</a>
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</div>
